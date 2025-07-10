@@ -1,0 +1,15 @@
+[package]
+name = "aimd"
+version = "0.1.0"
+edition = "2024"
+authors = ["n-WN"]
+description = "A high-performance streaming Markdown renderer for AI CLI tools"
+readme = "README.md"
+homepage = "https://github.com/n-WN/aimd"
+repository = "https://github.com/n-WN/aimd"
+license = "MIT"
+keywords = ["ai", "markdown", "cli", "renderer", "streaming"]
+categories = ["command-line-utilities", "text-processing"]
+
+[dependencies]
+pty-process = "0.5.2"
