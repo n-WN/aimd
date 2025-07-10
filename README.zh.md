@@ -4,11 +4,14 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey.svg)](https://github.com/your-username/aimd)
 
+
 一个高性能的流式Markdown渲染器，专为AI命令行工具设计。实时将AI输出渲染为带语法高亮的Markdown格式，支持所有主流AI CLI工具。
 
 **中文README** | [English README](README.md)
 
 ## ✨ 特性
+
+> 暂时在 Windows 上不可用, 不过你可以在 WSL 中使用它
 
 - 🚀 **流式渲染** - 实时渲染AI输出，无需等待完整响应
 - 🎨 **丰富格式支持** - 支持标题、列表、代码块、粗体、斜体等所有Markdown元素

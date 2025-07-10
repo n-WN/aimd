@@ -4,11 +4,14 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey.svg)](https://github.com/your-username/aimd)
 
+
 A high-performance streaming Markdown renderer designed for AI command-line tools. Real-time rendering of AI output with syntax highlighting in Markdown format, supporting all mainstream AI CLI tools.
 
 [中文README](README.zh.md) | **English README**
 
 ## ✨ Features
+
+> Temporarily unavailable on Windows, but you can use it in WSL.
 
 - 🚀 **Streaming Rendering** - Real-time AI output rendering without waiting for complete response
 - 🎨 **Rich Format Support** - Support for headers, lists, code blocks, bold, italic, and all Markdown elements

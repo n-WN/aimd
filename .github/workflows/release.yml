@@ -44,27 +44,27 @@ jobs:
           name: aimd-linux-x86_64
           path: target/x86_64-unknown-linux-musl/release/aimd
 
-  build-windows:
-    needs: check-branch
-    if: needs.check-branch.outputs.is_main == 'true'
-    name: Build Windows Binary
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
+  # build-windows:
+  #   needs: check-branch
+  #   if: needs.check-branch.outputs.is_main == 'true'
+  #   name: Build Windows Binary
+  #   runs-on: windows-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
 
-      - name: Setup Rust Toolchain
-        uses: dtolnay/rust-toolchain@stable
-        with:
-          targets: x86_64-pc-windows-msvc
+  #     - name: Setup Rust Toolchain
+  #       uses: dtolnay/rust-toolchain@stable
+  #       with:
+  #         targets: x86_64-pc-windows-msvc
 
-      - name: Build Windows Binary
-        run: cargo build --release
+  #     - name: Build Windows Binary
+  #       run: cargo build --release
 
-      - name: Upload Windows Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: aimd-windows-x86_64
-          path: target/release/aimd.exe
+  #     - name: Upload Windows Artifact
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: aimd-windows-x86_64
+  #         path: target/release/aimd.exe
 
   build-macos:
     needs: check-branch
@@ -93,7 +93,8 @@ jobs:
 
   create-release:
     name: Create GitHub Release
-    needs: [check-branch, build-linux, build-windows, build-macos]
+    # needs: [check-branch, build-linux, build-windows, build-macos]
+    needs: [check-branch, build-linux, build-macos]
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v') && needs.check-branch.outputs.is_main == 'true'
     permissions:
@@ -106,7 +107,7 @@ jobs:
         run: |
           mkdir -p release-artifacts
           mv aimd-linux-x86_64/aimd release-artifacts/aimd-linux-x86_64
-          mv aimd-windows-x86_64/aimd.exe release-artifacts/aimd-windows-x86_64.exe
+          # mv aimd-windows-x86_64/aimd.exe release-artifacts/aimd-windows-x86_64.exe
           mv aimd-macos-x86_64-apple-darwin/aimd release-artifacts/aimd-macos-x86_64
           mv aimd-macos-aarch64-apple-darwin/aimd release-artifacts/aimd-macos-arm64
           chmod +x release-artifacts/*
@@ -116,7 +117,7 @@ jobs:
         with:
           files: |
             release-artifacts/aimd-linux-x86_64
-            release-artifacts/aimd-windows-x86_64.exe
+            # release-artifacts/aimd-windows-x86_64.exe
             release-artifacts/aimd-macos-x86_64
             release-artifacts/aimd-macos-arm64
           generate_release_notes: true
