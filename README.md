@@ -29,7 +29,7 @@ A high-performance streaming Markdown renderer designed for AI command-line tool
 | Bold | `**bold**` | **Yellow bold** |
 | Italic | `*italic*` | *Italic text* |
 | Bold Italic | `***bold italic***` | ***Yellow bold italic*** |
-| Inline Code | `\`code\`` | 🟫 Orange-red code |
+| Inline Code | `code` | 🟫 Orange-red code |
 | Code Block | \`\`\`language<br/>code<br/>\`\`\` | 📦 Bordered code block |
 | Lists | `• item` | 🟣 Purple lists |
 | Quotes | `> quote` | 🟡 Yellow border |
