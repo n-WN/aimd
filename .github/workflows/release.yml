@@ -1,0 +1,122 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  check-branch:
+    runs-on: ubuntu-latest
+    outputs:
+      is_main: ${{ steps.branch_check.outputs.is_main }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check if tag is on main branch
+        id: branch_check
+        run: |
+          BRANCH=$(git branch -r --contains ${{ github.ref }})
+          if [[ $BRANCH == *origin/main* ]]; then
+            echo "is_main=true" >> $GITHUB_OUTPUT
+          else
+            echo "is_main=false" >> $GITHUB_OUTPUT
+          fi
+
+  build-linux:
+    needs: check-branch
+    if: needs.check-branch.outputs.is_main == 'true'
+    name: Build Linux Binary
+    runs-on: ubuntu-latest
+    container:
+      image: clux/muslrust:stable
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Linux Static Binary
+        run: cargo build --release
+
+      - name: Upload Linux Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aimd-linux-x86_64
+          path: target/x86_64-unknown-linux-musl/release/aimd
+
+  build-windows:
+    needs: check-branch
+    if: needs.check-branch.outputs.is_main == 'true'
+    name: Build Windows Binary
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Rust Toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: x86_64-pc-windows-msvc
+
+      - name: Build Windows Binary
+        run: cargo build --release
+
+      - name: Upload Windows Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aimd-windows-x86_64
+          path: target/release/aimd.exe
+
+  build-macos:
+    needs: check-branch
+    if: needs.check-branch.outputs.is_main == 'true'
+    name: Build macOS Binary
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        target: [x86_64-apple-darwin, aarch64-apple-darwin]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Rust Toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+
+      - name: Build macOS Binary
+        run: cargo build --release --target ${{ matrix.target }}
+
+      - name: Upload macOS Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aimd-macos-${{ matrix.target }}
+          path: target/${{ matrix.target }}/release/aimd
+
+  create-release:
+    name: Create GitHub Release
+    needs: [check-branch, build-linux, build-windows, build-macos]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v') && needs.check-branch.outputs.is_main == 'true'
+    permissions:
+      contents: write
+    steps:
+      - name: Download All Artifacts
+        uses: actions/download-artifact@v4
+
+      - name: Prepare Release Files
+        run: |
+          mkdir -p release-artifacts
+          mv aimd-linux-x86_64/aimd release-artifacts/aimd-linux-x86_64
+          mv aimd-windows-x86_64/aimd.exe release-artifacts/aimd-windows-x86_64.exe
+          mv aimd-macos-x86_64-apple-darwin/aimd release-artifacts/aimd-macos-x86_64
+          mv aimd-macos-aarch64-apple-darwin/aimd release-artifacts/aimd-macos-arm64
+          chmod +x release-artifacts/*
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            release-artifacts/aimd-linux-x86_64
+            release-artifacts/aimd-windows-x86_64.exe
+            release-artifacts/aimd-macos-x86_64
+            release-artifacts/aimd-macos-arm64
+          generate_release_notes: true
