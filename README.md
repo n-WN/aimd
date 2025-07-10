@@ -9,6 +9,8 @@ A high-performance streaming Markdown renderer designed for AI command-line tool
 
 [中文README](README.zh.md) | **English README**
 
+[![asciicast](https://asciinema.org/a/6a0TVOzkpjiXH07AlZLnipxJH.svg)](https://asciinema.org/a/6a0TVOzkpjiXH07AlZLnipxJH)
+
 ## ✨ Features
 
 > Temporarily unavailable on Windows, but you can use it in WSL.

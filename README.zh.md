@@ -9,6 +9,8 @@
 
 **中文README** | [English README](README.md)
 
+[![asciicast](https://asciinema.org/a/6a0TVOzkpjiXH07AlZLnipxJH.svg)](https://asciinema.org/a/6a0TVOzkpjiXH07AlZLnipxJH)
+
 ## ✨ 特性
 
 > 暂时在 Windows 上不可用, 不过你可以在 WSL 中使用它
