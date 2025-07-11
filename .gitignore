@@ -29,4 +29,5 @@ Thumbs.db
 # Documentation builds
 /docs/_build/
 
+# Build artifacts
 aimd-*-*
