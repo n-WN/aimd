@@ -1,6 +1,7 @@
 use aimd::*;
 use std::env;
 
+// cfg(test) 表示只有在测试时才编译这个模块
 #[cfg(test)]
 mod tests {
     use super::*;
