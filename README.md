@@ -2,7 +2,7 @@
 
 [![Rust](https://img.shields.io/badge/rust-1.70%2B-orange.svg)](https://www.rust-lang.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey.svg)](https://github.com/your-username/aimd)
+[![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey.svg)](https://github.com/n-WN/aimd)
 
 
 A high-performance streaming Markdown renderer designed for AI command-line tools. Real-time rendering of AI output with syntax highlighting in Markdown format, supporting all mainstream AI CLI tools.
@@ -44,7 +44,7 @@ Ensure you have Rust 1.70+ installed:
 
 ```bash
 # Clone repository
-git clone https://github.com/your-username/aimd.git
+git clone https://github.com/n-WN/aimd.git
 cd aimd
 
 # Build
@@ -216,7 +216,7 @@ print(response.choices[0].message.content)
 
 ```bash
 # Clone and enter directory
-git clone https://github.com/your-username/aimd.git
+git clone https://github.com/n-WN/aimd.git
 cd aimd
 
 # Run tests
@@ -297,9 +297,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-- Project Homepage: [GitHub](https://github.com/your-username/aimd)
-- Issue Reports: [Issues](https://github.com/your-username/aimd/issues)
-- Feature Requests: [Discussions](https://github.com/your-username/aimd/discussions)
+- Project Homepage: [GitHub](https://github.com/n-WN/aimd)
+- Issue Reports: [Issues](https://github.com/n-WN/aimd/issues)
+- Feature Requests: [Discussions](https://github.com/n-WN/aimd/discussions)
 
 ---
 

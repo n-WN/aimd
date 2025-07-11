@@ -2,7 +2,7 @@
 
 [![Rust](https://img.shields.io/badge/rust-1.70%2B-orange.svg)](https://www.rust-lang.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey.svg)](https://github.com/your-username/aimd)
+[![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey.svg)](https://github.com/n-WN/aimd)
 
 
 一个高性能的流式Markdown渲染器，专为AI命令行工具设计。实时将AI输出渲染为带语法高亮的Markdown格式，支持所有主流AI CLI工具。
@@ -44,7 +44,7 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/your-username/aimd.git
+git clone https://github.com/n-WN/aimd.git
 cd aimd
 
 # 编译
@@ -216,7 +216,7 @@ print(response.choices[0].message.content)
 
 ```bash
 # 克隆并进入目录
-git clone https://github.com/your-username/aimd.git
+git clone https://github.com/n-WN/aimd.git
 cd aimd
 
 # 运行测试
@@ -297,9 +297,9 @@ aimd/
 
 ## 📞 联系方式
 
-- 项目主页: [GitHub](https://github.com/your-username/aimd)
-- 问题反馈: [Issues](https://github.com/your-username/aimd/issues)
-- 功能建议: [Discussions](https://github.com/your-username/aimd/discussions)
+- 项目主页: [GitHub](https://github.com/n-WN/aimd)
+- 问题反馈: [Issues](https://github.com/n-WN/aimd/issues)
+- 功能建议: [Discussions](https://github.com/n-WN/aimd/discussions)
 
 ---
 
